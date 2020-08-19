@@ -2,7 +2,7 @@
 #Program to log mood, and calculate them on weekly average
 
 #Get color
-source $HOME/snippets/color
+source color
 
 
 
@@ -54,15 +54,15 @@ done
 
 #Color code according to mood
 
-if [ $MOOD -ge 8 ];
+if [ $1 -ge 8 ];
 then
 	echo -e  "${GREEN} ${GAUGE[@]} $RESET"
 
-elif [ $MOOD -ge 4 -a $MOOD -lt 8 ];
+elif [ $1 -ge 4 -a $1 -lt 8 ];
 then
 	echo -e "${BLUE} ${GAUGE[@]} $RESET"
 
-elif [ $MOOD -ge 1 -a $MOOD -lt 4 ];
+elif [ $1 -ge 1 -a $1 -lt 4 ];
 then
 	echo -e "${RED} ${GAUGE[@]} $RESET"
 
@@ -149,7 +149,7 @@ fi
 
 while :
 do
-	clear
+	#clear
 	echo "  --------Mood"
 	PIPE
 	echo "  -----10 Euphoric"
@@ -172,8 +172,6 @@ do
 		echo "$GAUGE"
 		echo "$MOOD" >> mood-log
 		
-		#Add day to sobriety counter
-		bash sobriety-other.sh
 
 		exit 0
 	
